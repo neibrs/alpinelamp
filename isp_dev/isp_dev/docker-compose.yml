@@ -1,7 +1,7 @@
 version: '3'
 services:
   app:
-    image: neibrs/isp_dev
+    image: neibrs/isp:dev
     container_name: isp_dev
     extra_hosts:
       - "dockerhost:192.168.1.142"

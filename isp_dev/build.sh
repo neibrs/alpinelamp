@@ -1,9 +1,9 @@
 #!/bin/bash
 
-docker pull neibrs/isp_dev
+docker pull neibrs/isp:dev
 
 docker rm -f isp_dev
-docker run -d --name isp_dev neibrs/isp_dev
+docker run -d --name isp_dev neibrs/isp:dev
 if [ -d ./web.old ]; then
   sudo rm -rf ./web.old
 fi

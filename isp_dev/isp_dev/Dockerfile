@@ -1,6 +1,6 @@
 FROM alpine
 ENV TIMEZONE Asia/Shanghai
-#RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 RUN apk update && apk upgrade
 RUN apk add mariadb mariadb-client \
     apache2 \ 
@@ -149,8 +149,6 @@ RUN composer require \
 
 #COPY files/install-drupal.sh install-drupal.sh
 #RUN chmod +x install-drupal.sh
-
-
 #
 #    sed -i 's#AllowOverride none#AllowOverride All#' /etc/apache2/httpd.conf && \
 #    sed -i 's#Require all denied#Require all granted#' /etc/apache2/httpd.conf && \
@@ -176,11 +174,10 @@ RUN sed -i 's#display_errors = Off#display_errors = On#' /etc/php7/php.ini && \
     sed -i 's#post_max_size = 8M#post_max_size = 100M#' /etc/php7/php.ini && \
     sed -i 's#session.cookie_httponly =#session.cookie_httponly = true#' /etc/php7/php.ini && \
     sed -i 's#error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT#error_reporting = E_ALL#' /etc/php7/php.ini
-WORKDIR /var/www
-COPY entry.sh entry.sh
-RUN chmod u+x /var/www/entry.sh
 
 WORKDIR /var/www/html
 COPY entry.sh /entry.sh
+RUN chmod u+x /entry.sh
+
 EXPOSE 80 22 443 3306
-ENTRYPOINT ["/var/www/entry.sh"]
+ENTRYPOINT ["/entry.sh"]
