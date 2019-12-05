@@ -3,6 +3,7 @@ services:
   app:
     image: neibrs/isp_dev
     container_name: isp_dev
+    entrypoint: isp_dev/entry.sh
     extra_hosts:
       - "dockerhost:192.168.1.142"
     environment:

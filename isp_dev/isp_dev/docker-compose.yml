@@ -8,6 +8,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "root"
       PHP_IDE_CONFIG: serverName=laradock
+    entrypoint: isp_dev/entry.sh
     volumes:
       - ./services/config/httpd.conf:/etc/apache2/httpd.conf
       - ./services/config/xdebug.ini:/etc/php7/conf.d/xdebug.ini

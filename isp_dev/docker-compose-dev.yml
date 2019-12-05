@@ -3,6 +3,7 @@ services:
   dev:
     image: neibrs/isp:dev
     container_name: isp_dev
+    entrypoint: isp_dev/entry.sh
     extra_hosts:
       - "dockerhost:192.168.1.142"
     environment:
@@ -14,9 +15,6 @@ services:
       - isp-dev-unison-sync:/var/www/html
     ports:
       - 88:80
-    entrypoint:
-      - sh
-      - isp_dev/entry.sh
 volumes:
   isp-dev-unison-sync:
     external: true
