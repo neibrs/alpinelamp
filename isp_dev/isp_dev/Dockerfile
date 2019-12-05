@@ -18,6 +18,7 @@ RUN apk add mariadb mariadb-client \
     php7-curl \
     php7-pdo_mysql \
     php7-mysqli \
+    php7-fileinfo \
     php7-json \
     php7-mcrypt \
     php7-xml \
