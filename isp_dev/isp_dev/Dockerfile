@@ -8,6 +8,7 @@ RUN apk add mariadb mariadb-client \
     curl wget vim htop git \
     tzdata \
     php7-apache2 \
+    php7-bcmath \
     php7-cli \
     php7-phar \
     php7-zlib \
