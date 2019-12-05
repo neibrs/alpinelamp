@@ -30,6 +30,7 @@ RUN apk add mariadb mariadb-client \
     php7-apcu \
     php7-opcache \
     php7-tokenizer \
+    php7-xmlwriter \
     php7-simplexml
 
 RUN curl -sS https://getcomposer.org/installer | \
