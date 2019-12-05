@@ -133,7 +133,7 @@ RUN mkdir -p /var/www/html/sites/default/files && \
   cp /var/www/html/sites/default/default.services.yml /var/www/html/sites/default/services.yml && \
   chmod a+rw /var/www/html/sites/default/settings.php && \
   chmod a+rw /var/www/html/sites/default/services.yml && \
-  chown -R www-data:www-data /var/www/html/
+  chown -R apache:apache /var/www/html/
 
 # install-drupal.sh will setup /var/www/private as file_private_path, create it first
 RUN mkdir -p /var/www/private && \
@@ -176,13 +176,9 @@ RUN sed -i 's#display_errors = Off#display_errors = On#' /etc/php7/php.ini && \
     sed -i 's#post_max_size = 8M#post_max_size = 100M#' /etc/php7/php.ini && \
     sed -i 's#session.cookie_httponly =#session.cookie_httponly = true#' /etc/php7/php.ini && \
     sed -i 's#error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT#error_reporting = E_ALL#' /etc/php7/php.ini
-
 COPY ./entry.sh /entry.sh
-
 RUN chmod u+x /entry.sh
 
-WORKDIR /var/www/localhost/htdocs/
-
+WORKDIR /var/www/html
 EXPOSE 80 22 443 3306
-
 ENTRYPOINT ["/entry.sh"]
