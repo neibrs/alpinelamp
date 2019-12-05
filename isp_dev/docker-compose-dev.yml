@@ -14,7 +14,9 @@ services:
       - isp-dev-unison-sync:/var/www/html
     ports:
       - 88:80
-    entrypoint: isp_dev/entry.sh
+    entrypoint:
+      - sh
+      - isp_dev/entry.sh
 volumes:
   isp-dev-unison-sync:
     external: true

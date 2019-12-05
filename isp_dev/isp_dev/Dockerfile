@@ -181,3 +181,4 @@ RUN sed -i 's#display_errors = Off#display_errors = On#' /etc/php7/php.ini && \
 
 WORKDIR /var/www/html
 EXPOSE 80 22 443 3306
+#ENTRYPOINT ["/entry.sh"]
