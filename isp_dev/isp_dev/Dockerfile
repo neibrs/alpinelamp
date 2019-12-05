@@ -176,9 +176,8 @@ RUN sed -i 's#display_errors = Off#display_errors = On#' /etc/php7/php.ini && \
     sed -i 's#post_max_size = 8M#post_max_size = 100M#' /etc/php7/php.ini && \
     sed -i 's#session.cookie_httponly =#session.cookie_httponly = true#' /etc/php7/php.ini && \
     sed -i 's#error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT#error_reporting = E_ALL#' /etc/php7/php.ini
-ADD entry.sh /entry.sh
-RUN chmod u+x /entry.sh
+#ADD entry.sh /entry.sh
+#RUN chmod u+x /entry.sh
 
 WORKDIR /var/www/html
 EXPOSE 80 22 443 3306
-ENTRYPOINT ["/entry.sh"]
