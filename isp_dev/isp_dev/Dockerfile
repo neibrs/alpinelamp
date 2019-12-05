@@ -32,6 +32,7 @@ RUN apk add mariadb mariadb-client \
     php7-apcu \
     php7-opcache \
     php7-tokenizer \
+    php7-xmlreader \
     php7-xmlwriter \
     php7-simplexml
 
