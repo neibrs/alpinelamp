@@ -1,7 +1,7 @@
 version: '3'
 services:
   app:
-    image: neibrs/isp_dev
+    image: neibrs/isp:dev
     container_name: isp_dev
     entrypoint: isp_dev/entry.sh
     extra_hosts:
@@ -10,8 +10,8 @@ services:
       MYSQL_ROOT_PASSWORD: "root"
       PHP_IDE_CONFIG: serverName=laradock
     volumes:
-      - ./isp_dev/services/config/httpd.conf:/etc/apache2/httpd.conf
-      - ./isp_dev/services/config/xdebug.ini:/etc/php7/conf.d/xdebug.ini
+      - isp_dev/services/config/httpd.conf:/etc/apache2/httpd.conf
+      - isp_dev/services/config/xdebug.ini:/etc/php7/conf.d/xdebug.ini
       - ./web:/var/www/html
     ports:
       - 88:80
