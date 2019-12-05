@@ -11,6 +11,9 @@ services:
     volumes:
       - ./isp_dev/services/config/httpd.conf:/etc/apache2/httpd.conf
       - ./isp_dev/services/config/xdebug.ini:/etc/php7/conf.d/xdebug.ini
-      - ./web:/var/www/html
+      - isp-dev-unison-sync:/var/www/html
     ports:
       - 88:80
+volumes:
+  isp-dev-unison-sync:
+    external: true
