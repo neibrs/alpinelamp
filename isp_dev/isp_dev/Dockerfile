@@ -36,8 +36,13 @@ RUN apk add mariadb mariadb-client \
     php7-xmlwriter \
     php7-simplexml
 
-RUN curl -sS https://getcomposer.org/installer | \
-    php -- --install-dir=/usr/bin --filename=composer
+#RUN curl -sS https://getcomposer.org/installer | \
+#    php -- --install-dir=/usr/bin --filename=composer
+RUN php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');" && \
+  php composer-setup.php && \
+  php -r "unlink('composer-setup.php');" && \
+  mv composer.phar /usr/local/bin/composer && \
+  chmod a+x /usr/local/bin/composer
 # Install Drupal
 RUN rm -rf /var/www/html
 ENV DRUPAL_VERSION 20190521
@@ -45,6 +50,7 @@ RUN git clone -b 8.8.x https://github.com/drupal/drupal.git /var/www/html
 
 WORKDIR /var/www/html
 ENV COMPOSER_PROCESS_TIMEOUT 1200
+RUN  composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 RUN composer install
 
 # Install Drupal modules
