@@ -13,5 +13,9 @@ services:
       - ./services/config/httpd.conf:/etc/apache2/httpd.conf
       - ./services/config/xdebug.ini:/etc/php7/conf.d/xdebug.ini
       - ./web:/var/www/html
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5g"
     ports:
       - 88:80

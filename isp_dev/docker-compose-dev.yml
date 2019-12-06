@@ -12,6 +12,10 @@ services:
       - ./isp_dev/services/config/httpd.conf:/etc/apache2/httpd.conf
       - ./isp_dev/services/config/xdebug.ini:/etc/php7/conf.d/xdebug.ini
       - isp-dev-unison-sync:/var/www/html
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5g"
     ports:
       - 88:80
 volumes:
